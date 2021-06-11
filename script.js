@@ -1,28 +1,25 @@
-var out=" ";
+var searchButton = document.getElementById('searchButton')
+var inputText = document.getElementById('inputText')
+var output = document.getElementById('output')
 
-function oneOkCliked(e){
-    e.stopPropagation();
-    alert('ok clicked')
-    out=out+"ok<br/>";
-    document.getElementById('out').innerHTML=`${out}`
+function addText(){
+    let text = inputText.value
+    console.log(text)
+    let newButton = document.createElement('button')
+    newButton.classList.add('btn')
+    newButton.classList.add('btn-outline-primary')
+    newButton.classList.add('m-2')
+    newButton.setAttribute('type','button')
+    newButton.innerText = text
+    output.appendChild(newButton)
 }
 
-function oneCancelCliked(e){
-    e.stopPropagation();
-    alert('cancel clicked')
-    out=out+"cancel<br/>";
-    document.getElementById('out').innerHTML=`${out}`
-}
+var span=0;
 
-function oneNoCliked(e){
-    e.stopPropagation();
-    alert('no clicked')
-    out=out+"no<br/>";
-    document.getElementById('out').innerHTML=`${out}`
-}
+searchButton.addEventListener('click',addText)
+searchButton.addEventListener('click',function(e){
+    span++;
+    document.getElementById('span').innerHTML=`${span}`
+})
 
-document.getElementById('container').onclick = function(e){
-    alert('container clicked')
-    document.getElementById('out').innerHTML=` `
-}
-
+inputText.addEventListener('blur',addText)
